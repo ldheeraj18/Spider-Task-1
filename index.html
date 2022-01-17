@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="CurrentDate()">
+    <div id="bg">
+        <div class="ClockContainer">
+            <div id="clock">
+                <div id="hour"></div>
+                <div id="minute"></div>
+                <div id="second"></div>
+            </div>
+        </div>
+        <container class="calender">
+            <container class="months">
+                <div class="prev" onclick="ChangeDate('prev')">
+                    <span>&#10094</span>
+                </div>
+                <div class="disc">
+                    <h2 id="month"></h2>
+                    <p id="prsnt_date"></p>
+                </div>
+                <div class="next" onclick="ChangeDate('next')">
+                    <span>&#10095</span>
+                </div>
+            </container>
+            <container class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </container>
+            <container class="dates">
+            </container>
+        </container>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
