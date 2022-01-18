@@ -1,4 +1,36 @@
 let dt = new Date();
+document.querySelector('#addlist').onclick = function () {
+    if (document.querySelector('#item').value.length == 0) {
+        alert("Enter a Task");
+    }
+    else {
+        document.querySelector('#contents').innerHTML += `
+            <div class="task">
+            <span id = "taskname">
+                ${document.querySelector('#item').value}
+            </span>
+            <button class = "delete">
+            <i class="fas fa-trash-alt"></i>
+            </button>
+            </div>
+            `;
+
+        let current_task = document.querySelectorAll(".delete");
+        for (let i = 0; i < current_task.length; i++) {
+            current_task[i].onclick = function () {
+                this.parentNode.remove();
+            }
+        }
+        let tasks = document.querySelectorAll(".task")
+        for (let i = 0; i < tasks.length; i++) {
+            tasks[i].onclick = function () {
+                this.classList.toggle('completed')
+            }
+        }
+
+        document.querySelector("#item").value = "";
+    }
+}
 function CurrentDate() {
     let today = new Date();
     const endDate = new Date(
@@ -54,6 +86,7 @@ function CurrentDate() {
         cell += "<div class = 'n_date'>" + i + "</div>";
 
     document.getElementsByClassName("dates")[0].innerHTML = cell;
+
 }
 function ChangeDate(value) {
     if (value === 'prev')
