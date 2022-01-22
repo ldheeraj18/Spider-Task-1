@@ -1,34 +1,50 @@
 let dt = new Date();
+fetchtask();
 document.querySelector('#addlist').onclick = function () {
     if (document.querySelector('#item').value.length == 0) {
         alert("Enter a Task");
     }
     else {
+        let todos = localStorage.getItem("todos");
+        if (todos) {
+            let task = JSON.parse(todos);
+            task.push({ title: document.querySelector('#item').value })
+            localStorage.setItem("todos", JSON.stringify(task));
+        }
+        else {
+            let task = [];
+            task.push({ title: document.querySelector('#item').value })
+            localStorage.setItem("todos", JSON.stringify(task));
+        }
+        document.querySelector("#item").value = "";
+        fetchtask();
+    }
+}
+function fetchtask() {
+    let tasks = JSON.parse(localStorage.getItem("todos"));
+    for (let i = 0; i < tasks.length; i++) {
         document.querySelector('#contents').innerHTML += `
             <div class="task">
             <span id = "taskname">
-                ${document.querySelector('#item').value}
+                ${tasks[i].title}
             </span>
             <button class = "delete">
             <i class="fas fa-trash-alt"></i>
             </button>
             </div>
             `;
-
-        let current_task = document.querySelectorAll(".delete");
-        for (let i = 0; i < current_task.length; i++) {
-            current_task[i].onclick = function () {
-                this.parentNode.remove();
-            }
+    }
+    let current_task = document.querySelectorAll(".delete");
+    for (let i = 0; i < current_task.length; i++) {
+        current_task[i].onclick = function () {
+            this.parentNode.remove();
         }
-        let tasks = document.querySelectorAll(".task")
-        for (let i = 0; i < tasks.length; i++) {
-            tasks[i].onclick = function () {
-                this.classList.toggle('completed')
-            }
+    }
+    let task1 = document.querySelectorAll(".task")
+    for (let i = 0; i < task1.length; i++) {
+        task1[i].onclick = function () {
+            this.classList.toggle('completed')
         }
-
-        document.querySelector("#item").value = "";
     }
 }
 function CurrentDat() {
@@ -107,4 +123,5 @@ setInterval(() => {
     hour.style.transform = `rotate(${H_rot}deg)`;
     minute.style.transform = `rotate(${M_rot}deg)`;
     second.style.transform = `rotate(${S_rot}deg)`;
+    document.querySelector(".time").innerHTML = `${hrs}:${min}:${sec}`
 }, 1000)
