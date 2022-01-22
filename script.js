@@ -31,7 +31,7 @@ document.querySelector('#addlist').onclick = function () {
         document.querySelector("#item").value = "";
     }
 }
-function CurrentDate() {
+function CurrentDat() {
     let today = new Date();
     const endDate = new Date(
         dt.getFullYear(),
@@ -93,7 +93,7 @@ function ChangeDate(value) {
         dt.setMonth(dt.getMonth() - 1);
     else
         dt.setMonth(dt.getMonth() + 1);
-    CurrentDate();
+    CurrentDat();
 }
 setInterval(() => {
     const d = new Date();
