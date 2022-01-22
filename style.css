@@ -184,3 +184,12 @@
     cursor: pointer;
     outline: none;
 }
+.time{
+    padding: 5px;
+    background: #0FE6C6;
+    color: navy;
+    position: fixed;
+    font-family: 'Black Ops One', cursive;
+    border-radius: 5px;
+    font-size: larger;
+}
